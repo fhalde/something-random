@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Animation</title>
+    <style type="text/css">
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fafafa;
+    }
+    #sunrise, #waves {
+        position: absolute;
+        bottom: 0;
+        height: 0;
+    }
+    #waves {
+        z-index: 1000;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="waves"></div>
+    <div id="sunrise"></div>
+</body>
+<script type="text/javascript">
+    let width  = window.innerWidth;
+    let height = window.innerHeight;
+    let ratio  = 0.1;
+
+    function trapezium(sunrise, color) {
+        sunrise.style.width        = `${width * ratio}px`;
+        sunrise.style.borderLeft   = `${width * (1 - ratio) / 2}px solid transparent`;
+        sunrise.style.borderRight  = `${width * (1 - ratio) / 2}px solid transparent`;
+        sunrise.style.borderBottom = `${height * 0.5}px solid ${color}`;
+    }
+
+    trapezium(sunrise, "#03A9F4");
+    trapezium(waves, "#0D47A1");
+</script>
+</html>
