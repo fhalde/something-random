@@ -24,8 +24,6 @@
         #invisibler,
         #caterpillar {
             -webkit-transition: width 1s ease-in-out;
-            -moz-transition: width 1s ease-in-out;
-            -o-transition: width 1s ease-in-out;
             transition: width 1s ease-in-out;
         }
         
@@ -54,7 +52,14 @@
             background: url(
               https://nucl.ai/files/2016/04/Minecraft_Dirt.jpg
             );
-            animation: 70s scroll infinite linear;
+            -webkit-animation: 70s scroll infinite linear;
+                    animation: 70s scroll infinite linear;
+        }
+
+        @-webkit-keyframes scroll{
+            100%{
+                background-position: -900px 0px;
+            }
         }
 
         @keyframes scroll{
