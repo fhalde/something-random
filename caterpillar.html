@@ -39,29 +39,51 @@
         
         #caterpillar {
             position: absolute;
+            width: 100px;
             left: 100px;
             height: 20px;
             background-color: #4CAF50;
+        }
+
+        #soil {
+            position: absolute;
+            width: 300px;
+            top: 25px;
+            border-radius: 10px;
+            height: 20px;
+            background: url(
+              https://nucl.ai/files/2016/04/Minecraft_Dirt.jpg
+            );
+            animation: 70s scroll infinite linear;
+        }
+
+        @keyframes scroll{
+            100%{
+                background-position: -900px 0px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <iframe 
+        width="0" height="0" src="https://www.youtube.com/embed/YfFhxA2JFOA?autoplay=1&loop=1" frameborder="0" allowfullscreen>
+    </iframe>
     <div id="app">
         <div id="invisibler"></div>
         <div id="caterpillar"></div>
+        <div id="soil"></div>
     </div>
 </body>
 <script type="text/javascript">
-    let iwid = ["150px", "100px"];
-    let cwid = ["95px", "100px"];
+    let invisible_frames = ["150px", "100px"];
+    let caterpillar_frames = ["95px", "100px"];
     let i = 0;
     ! function repeat() {
-        invisibler.style.width = iwid[i];
-        caterpillar.style.width = cwid[i];
+        invisibler.style.width = invisible_frames[i];
+        caterpillar.style.width = caterpillar_frames[i];
         i = (i + 1) % 2
         setTimeout(repeat, 1000);
     }();
 </script>
-
 </html>
