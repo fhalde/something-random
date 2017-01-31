@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Animation</title>
+    <style type="text/css">
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #leg_skin {
+            position: relative;
+            z-index: 1;
+            top: calc(50% - 150px);
+            left: calc(50% - 250px);
+            width: 500px;
+            height: 300px;
+            background-color: #FFE0B2;
+        }
+        #wax_patch, #red_skin {
+            position: absolute;
+            z-index: 3;
+            top: calc(50% - 75px);
+            left: calc(50% - 125px);
+            width: 250px;
+            height: 150px;
+            opacity: 0;
+        }
+        #wax_patch {
+            transform: scale(5, 5);
+            transition: 1s ease;
+            background-color: #FFA726;
+        }
+        #red_skin {
+            background-color: #FFE0B2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="ouch" style="text-align: center; visibility: hidden;"><pre>Ooouuuch</pre></h1>
+    <div id="leg_skin">
+        <div id="wax_patch"></div>
+        <div id="red_skin"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    ! function put_hair(x, y, w, h) {
+        function div(i, j) {
+            hair = document.createElement('div');
+            hair.style.display = "inline-block";
+            hair.style.position = "absolute";
+            hair.style.zIndex = 2;
+            hair.style.top = j + "px";
+            hair.style.left = i + "px";
+            hair.style.width = "4px";
+            hair.style.height = "2px";
+            hair.style.backgroundColor = "#424242";
+            leg_skin.appendChild(hair);
+        }
+        for(let i = x; i < x + w; i += 4) {
+            for(let j = y; j < y + h; j += 4) {
+                if(Math.random() >= 0.8)
+                    div(i - leg_skin.offsetLeft, j - leg_skin.offsetTop);
+            }
+        }
+    }(leg_skin.offsetLeft, leg_skin.offsetTop, leg_skin.offsetWidth, leg_skin.offsetHeight);
+
+    function pull_patch() {
+        wax_patch.style.opacity = 0;
+        wax_patch.style.transform = "scale(5, 5)";
+        red_skin.style.opacity = 1;
+        ouch.style.visibility = "visible";
+        setTimeout(apply_patch, 2000);
+    }
+
+    function apply_patch() {
+        ouch.style.visibility = "hidden";
+        red_skin.style.opacity = 0;
+        wax_patch.style.opacity = 1;
+        wax_patch.style.transform = "scale(1, 1)";
+        setTimeout(pull_patch, 2000);
+    }
+
+    setTimeout(apply_patch, 1000);
+
+</script>
+
+</html>
