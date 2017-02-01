@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rebel</title>
+    <style type="text/css">
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #object {
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            width: 50px;
+            height: 50px;
+            border-radius: 10%;
+            background-color: #4CAF50;
+            transition: 1s ease-in-out;
+            left: 75%;
+        }
+        #side1, #side2 {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background-color: #4CAF50;
+            transition: 1s ease-in-out;
+        }
+        #side2 {
+            left: 50%;
+            background-color: #FAFAFA;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="margin-left: 50px; position: absolute; z-index: 10000"><pre>Other side is always greener</pre></h2>
+    <div id="side1"></div>
+    <div id="side2"></div>
+    <div id="object"></div>
+</body>
+<script type="text/javascript">
+    let colors = ["#FAFAFA", "#4CAF50"];
+    let lefts  = ["25%", "75%"];
+    let i      = 0;
+    function repeat() {
+        side1.style.backgroundColor = colors[i % 2];
+        side2.style.backgroundColor = colors[(i + 1) % 2];
+        object.style.left = lefts[i % 2];
+        i = i + 1;
+        setTimeout(repeat, 1200);
+    }
+    setTimeout(repeat, 1000);
+</script>
+
+</html>
